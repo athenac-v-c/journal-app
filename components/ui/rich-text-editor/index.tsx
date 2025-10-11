@@ -3,11 +3,17 @@ import { useEditor, EditorContent} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
 import MenuBar from "./menu-bar";
+import TextAlign from "@tiptap/extension-text-align";
 
 const RichTextEditor=()=>{
   const editor = useEditor({
     extensions:[
-        StarterKit
+        StarterKit,
+
+        TextAlign.configure({
+            types: ['heading', 'paragraph'],
+            alignments: ['left', 'right','center'],
+        })
     ],
     content:'<p> please edit </p>',
     immediatelyRender:false,
