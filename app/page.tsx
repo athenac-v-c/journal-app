@@ -1,11 +1,11 @@
 'use client'
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import Image from "next/image";
 import RichTextEditor from "@/components/ui/rich-text-editor";
 
 export default function Home() {
   const [post,setPost] =useState('')
-  const onChange=(content)=>{
+  const onChange=(content: string)=>{
     //setPost(e.target.value);
     setPost(content)
     console.log(content)
