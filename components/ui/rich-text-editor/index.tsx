@@ -17,21 +17,25 @@ const RichTextEditor=({content,onChange}:RichTextEditorPors)=>{
         extensions:[
 
             StarterKit.configure({
+                
                 bulletList:{
                     HTMLAttributes: {
-                    class: 'list-disc ml-4',
+                    //tailwind defualt is list-outside, without list-inside
+                    //when applying padding effect the bullet dot is 
+                    //far away from text
+                    class:'list-disc list-inside'
                 },
             },
                 orderedList:{
                     HTMLAttributes: {
-                    class: 'list-decimal ml-4',
+                    class: 'list-decimal list-inside',
                 },
           
             },
 
             }),
             TextAlign.configure({
-                types: ['heading', 'paragraph'],
+                types: ['heading', 'paragraph','listItem'],
                 alignments: ['left', 'right','center'],
             }),
             Highlight, 

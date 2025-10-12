@@ -10,6 +10,7 @@ export default function MenuBar({editor}:{editor:Editor | null}){
     return null
   }
   const options = [
+
     {
       icon: <Heading1 className="size-4" />,
       onClick:()=>editor.chain().focus().toggleHeading({level:1}).run(),
