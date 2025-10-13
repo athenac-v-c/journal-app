@@ -10,9 +10,9 @@ export default function SignUp(){
     }
     const [User,setUser] = useState<User|null>(null)
     const getUser = () =>{
+       
 
 
-        
     }
 
     return(
