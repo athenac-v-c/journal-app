@@ -64,7 +64,7 @@ export default function SignUp(){
                     type='password' 
                     name='password'
                     value={password}
-                    onChange={(e)=>setUsername(e.target.value)}
+                    onChange={(e)=>setPassword(e.target.value)}
                 />
             </div>
             </div>
