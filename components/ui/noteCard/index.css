@@ -1,4 +1,54 @@
-.card{
 
-    border:2px solid black
+.note-card{
+    margin-top:10px ;
+    position: relative;
+    border:1px solid black;
+    width: 15%;
+    height:200px;
+    padding: 15px;
+}
+.note-title{
+   overflow: hidden;
+   
+}
+.note-preview{
+    display: block;
+    height: 50%;
+    overflow: hidden;
+    font-size: xx-small;
+    
+    
+}
+.note-date{
+    margin-top: 20px;
+    font-size: xx-small;
+    
+}
+.note-card {
+  position: relative;
+  border: 1px solid black;
+  width: 250px;
+  height: 220px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;  /* pushes edit/read to opposite sides */ 
+  margin-top: 10px;
+}
+
+.buttons a {
+  all: unset; 
+  color: rgb(16, 16, 26);         
+  text-decoration: underline;  
+  cursor: pointer;     
+}
+
+.buttons a:hover {
+  color: rgb(102, 139, 0);
 }

@@ -1,11 +1,12 @@
 'use client'
 import { useState,useEffect } from "react"
 import "./index.css"
+import Link from 'next/link'
 type NoteCardProps ={
     id:number;
     title:string;
     content:string;
-    date:Date
+    date:string
 }
 
 
@@ -14,24 +15,26 @@ type NoteCardProps ={
 export default function NoteCard({id,title,content,date}:NoteCardProps){
 
     return(
-        <>
-        <div className="Card">
-        <div className="title">
-            <h1>{title}</h1>
-        </div>
-        <div className="content">
-            {content}
-        </div>
-        <div className="date">
-            {/*how to write date variable*/ }
-        </div>
-        <div className="btns">
-            <button className="edit">edit</button>
-            <button className="read">edit</button>
-        </div>
-        </div>
+        
+        <div className="note-card">
+            <div className="note-title">
+                <strong>{title}</strong>
+            </div>
+            <hr></hr>
+            <div className="note-preview">
+                {content}
+             </div>
+            <div className="note-date">
+                {date}
+             </div>
+             <div className="buttons">
+                <a href = "#">edit</a>
+                <a href = "#">read</a>
+            </div>
 
-        </>
+        </div>
+        
+    
     )
 
 
