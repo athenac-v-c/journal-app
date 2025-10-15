@@ -1,7 +1,7 @@
 .note-group{
-  
   display: flex;
   position:relative;
   flex-wrap:wrap;
-  gap:10px;
+  gap:20px;
+  padding:10px;
 }
