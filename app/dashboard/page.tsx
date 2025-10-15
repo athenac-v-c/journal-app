@@ -8,44 +8,34 @@ import "./page.css"
 export default function Dashboard(){
    
    
-    const id = 123;
-    const title = "first note";
-    const content = "Beautiful question 💡 — that “fixed-size note preview effect (like Notability, Apple Notes, or Notion cards) is a super common UI pattern,\
-You can achieve it easily in React + CSS / Tailwind using scroll clipping or text truncation\
-Let’s go through 3 good approaches 👇";
-    const date = "08/01/2024";
-                
-    
-
-
+   const notes = [
+  { id: 1, title: "First note", content: "Hello world", date: "08/01/2024" },
+  { id: 2, title: "Second note", content: "Beautiful question 🌟", date: "08/02/2024" },
+  { id: 3, title: "Third note", content: "Learning React!", date: "08/03/2024" },
+  { id: 4, title: "Fourth note", content: "CSS layout practice", date: "08/04/2024" },
+  { id: 5, title: "Fifth note", content: "Building dashboards", date: "08/05/2024" },
+  ];
 
 
     return(
         <>
-          <h1>
-                    My notes
-         </h1>
-           <hr>
-                </hr>
-                <hr>
-                </hr>
+            <h1>My notes</h1>
+            <hr/>
+            <hr/>
             <div className='note-group'>
-              
-              
-                
-                <NoteCard id ={id} title = {title} content = {content} date = {date}/>
+           
+               {notes.map((note)=>(
 
-                
+                    <NoteCard  key = {note.id}
+                            id ={note.id} 
+                            title = {note.title} 
+                            content = {note.content} 
+                            date = {note.date}
+                    />
+
+                ))}
             </div>
        
-       
-       
-       
-       
-       
-       
-       
-
        </>
 
     )

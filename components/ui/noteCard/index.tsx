@@ -9,9 +9,6 @@ type NoteCardProps ={
     date:string
 }
 
-
-
-
 export default function NoteCard({id,title,content,date}:NoteCardProps){
 
     return(
