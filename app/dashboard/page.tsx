@@ -19,7 +19,13 @@ export default function Dashboard(){
 
     return(
         <>
-            <h1>My notes</h1>
+            <div className = "head">
+                <h1>My notes</h1> 
+                <a href='/editor'>new note</a>
+                
+            </div>
+            
+
             <hr/>
             <hr/>
             <div className='note-group'>
@@ -32,7 +38,6 @@ export default function Dashboard(){
                             content = {note.content} 
                             date = {note.date}
                     />
-
                 ))}
             </div>
        

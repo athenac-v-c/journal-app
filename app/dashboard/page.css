@@ -1,3 +1,20 @@
+
+
+.head{
+display: flex;
+justify-content: space-between;
+}
+
+.head a{
+  position: relative;
+  text-decoration: underline;  
+  cursor: pointer; 
+}
+.head a:hover{
+  color: blue;
+  font-size: larger;
+}
+
 .note-group{
   display: flex;
   position:relative;
