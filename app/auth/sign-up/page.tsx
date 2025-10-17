@@ -14,7 +14,7 @@ export default function SignUp(){
     const [username, setUsername] = useState('')
     const [password,setPassword] = useState('')
     
-    const handleSignUp = (e:React.FormEvent)=>{
+    /*const handleSignUp = (e:React.FormEvent)=>{
       
         e.preventDefault();// form submission will reload the page since it sends a request and clears everything, this prevents reloading behavior
         
@@ -23,11 +23,32 @@ export default function SignUp(){
 
         console.log('New user created:', newUser)
 
-    }
+    }*/
+    const handleSignUp = async(e:React.FormEvent) =>{
+            //prevent  window from reloading
+            e.preventDefault()
+    
+            try{
+        
+                const response = await fetch('/api/auth/sign-up',{
+                    method:"POST",
+                    headers:{'Content-type':'application/json'},
+                    body:JSON.stringify({username, password})
+                })
+                const data = await response.json()
+                console.log(data)
+            }
+            catch(err){
+                console.log('Error',err)
+    
+            }
+    
+        }
 
     return(
+     <div className="max-w-5xl max-w-5xl mx-auto py-8">
      <form className="form" onSubmit={handleSignUp}>
-        <div className="form">
+       
             <div>
                 <h1>Create a new account</h1>
             </div>
@@ -73,9 +94,9 @@ export default function SignUp(){
                     sign up
                 </button>
             </div> 
-            
+          </form>
         </div>
-    </form>
+  
 
     )
 
