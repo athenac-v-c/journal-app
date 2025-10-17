@@ -18,7 +18,7 @@ export default function Dashboard(){
 
 
     return(
-        <>
+        <div className="max-w-5xl max-w-5xl mx-auto py-8 ">
             <div className = "head">
                 <h1>My notes</h1> 
                 <a href='/editor'>new note</a>
@@ -41,7 +41,7 @@ export default function Dashboard(){
                 ))}
             </div>
        
-       </>
+       </div>
 
     )
 
