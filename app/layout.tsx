@@ -24,20 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'></link>
+      </head>
       <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased home-page`}
        
       >
         {children}
-      <header>
-      <h1>Logo</h1>
-      <nav>
-        <a href = "./">Home</a>
-        <a href = "./about">About</a>
-        <button >login</button>
-        <button >sign up</button>
-      </nav>
-      </header>
+      
       </body>
     </html>
   );
