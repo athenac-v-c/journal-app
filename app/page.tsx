@@ -2,9 +2,10 @@
 import { SetStateAction, useState } from "react";
 import Image from "next/image";
 import RichTextEditor from "@/components/ui/rich-text-editor";
-import Login from "@/components/ui/login";
+import Login from "@/components/login";
 import Dashboard from "./dashboard/page";
 import "./page.css"
+import SignUp from "@/components/sign-up";
 export default function Home() {
   /*const [post,setPost] =useState('')
   const onChange=(content: string)=>{
@@ -30,6 +31,7 @@ export default function Home() {
         <a href="#" >Contact</a>
       </nav>
       </header>
+      <div className="background"></div>
       <div className="container">
          
          
@@ -47,17 +49,13 @@ export default function Home() {
 A quiet space to capture moments, memories, and moods.</p>
 
           </div>
-          <div className="login-signup-ui">
-            
-               <Login />
-            
-           
+          <div className="login-signup-ui">   
+               <Login /> 
+               <SignUp />  
           </div>
 
       </div>
     
     </div>
-    
-  
   );
 }

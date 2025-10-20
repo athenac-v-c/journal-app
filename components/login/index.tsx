@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 import Link from 'next/link'
-export default function Login({className = " "}:{className?:string}){
+export default function Login(){
 
     const [username, setUsername] = useState<string|null>('')
     const [password,setPassword] = useState<string|null>('')
@@ -21,7 +21,7 @@ export default function Login({className = " "}:{className?:string}){
 
         try{
     
-            const response = await fetch('/api/auth/login',{
+            const response = await fetch('../../app/api/login',{
                 method:"POST",
                 headers:{'Content-type':'application/json'},
                 body:JSON.stringify({username, password})
@@ -45,10 +45,7 @@ export default function Login({className = " "}:{className?:string}){
         <div className="form-box login">
             <form onSubmit={handleSubmit}>
                 <h2>Sign in</h2>
-            
-           
                 <div className='input-box'>
-                    
                     <input
                         type='email' 
                         name='email'
@@ -59,11 +56,7 @@ export default function Login({className = " "}:{className?:string}){
                     <span className='icon'><i className='bxr  bx-envelope-alt'  ></i> </span>
                     
                 </div>
-            
-            
             <div className='input-box'>
-               
-                
                 <input 
                     type='password' 
                     name='password'
@@ -79,11 +72,10 @@ export default function Login({className = " "}:{className?:string}){
                 <a href = "#"> Forget password?</a>
 
             </div>
-            
-          
                 <button className='btn' type = 'submit'>
                     Sign In
                 </button>
+                 <button className="login-register-btn">Don't have an account?</button>
             
             </form>
             

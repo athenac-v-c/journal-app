@@ -12,7 +12,14 @@ body{
 }
 
 
-
+.background{
+    width: 100%;
+    height: 100vh;
+    background:url('../assets/bg2.avif') no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+}
 header{
    position: fixed;
    display: flex;
@@ -75,6 +82,10 @@ button:hover{
     background-position: center;
 
 }
+/*
+
+the login section is not wrapped around its parent (need to be fixed later)
+*/
 .content{
     width:58%;
     height: 100%;
@@ -108,12 +119,13 @@ button:hover{
 }
 
 .login-signup-ui .form-box{
+    position: absolute;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    background: transparent;
     backdrop-filter: blur(20px);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -128,10 +140,11 @@ button:hover{
 
 .form-box .input-box{
     position: relative;
-    width:340px;
+    width:250px;
     height:50px;
     border-bottom: 2px solid white;
     margin: 30px 0;
+    
 
 }
 
@@ -184,7 +197,7 @@ button:hover{
  text-decoration: underline;
 }
 .btn{
-    width:100%;
+    width:80%;
     height: 50%;
     background-color: rgba(216, 100, 82, 0.938);
     border: none;
@@ -196,3 +209,24 @@ button:hover{
     font-weight: 500;
     box-shadow: 0 0 10px rgb(5, 3, 0);
 }
+
+
+.login-register-btn{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/*
+.login-signup-ui .form-box.register{
+    transform: translateX(430px);
+    display: none;
+}
+/*
+.login-signup-ui .form-box.login{
+
+    transform: translateX(0px);
+}
+
+.login-signup-ui.active .form-box.login{
+    transform: translateX(430px);
+}*/
