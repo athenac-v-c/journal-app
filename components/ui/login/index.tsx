@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import '../page.css'
+
 import Link from 'next/link'
-export default function Login(){
+export default function Login({className = " "}:{className?:string}){
 
     const [username, setUsername] = useState<string|null>('')
     const [password,setPassword] = useState<string|null>('')
@@ -42,61 +42,52 @@ export default function Login(){
     }
 
   return(
-    <>
-        <div className="form">
-            <div>
-                <h1>Login</h1>
-            </div>
+        <div className="form-box login">
             <form onSubmit={handleSubmit}>
-            <div>
+                <h2>Sign in</h2>
+            
            
-            <div className=''>
-                <label htmlFor='username'>
-                    Username:
-                </label>
-            </div>
-            <div>
-                <input
-                    className='inputBox'
-                    id='username' 
-                    type='text' 
-                    name='username'
-                    onChange={getUsername}
-                />
-            </div>
-            </div>
-            <div>
-            <div>
-                <label htmlFor='password'>
-                    Password:
-                </label>
-            </div>
-            <div>
+                <div className='input-box'>
+                    
+                    <input
+                        type='email' 
+                        name='email'
+                        onChange={getUsername}
+                        required
+                    />
+                    <label>Email</label>
+                    <span className='icon'><i className='bxr  bx-envelope-alt'  ></i> </span>
+                    
+                </div>
+            
+            
+            <div className='input-box'>
+               
+                
                 <input 
-                    className='inputBox'
-                    id='password' 
                     type='password' 
                     name='password'
                     onChange={getPassword}
+                    required
                 />
+                <label>Password</label>
+                <span className = "icon"><i className='bxr  bx-lock'  ></i> </span>
+                
             </div>
+            <div className="remember-forgot">
+                <label> <input type="checkbox"/>Remember me</label>
+                <a href = "#"> Forget password?</a>
+
             </div>
-            <div >
-                <button id='btn' type = 'submit'>
-                    submit
+            
+          
+                <button className='btn' type = 'submit'>
+                    Sign In
                 </button>
-            </div>
+            
             </form>
-            <div >
-                <Link href="/auth/sign-up" id='go-sign-up'>
-                    Dont have an account, click to sign up
-                </Link>
-            </div>
+            
         </div>
-
-    </>
-
-
   )
 
 }

@@ -1,12 +1,13 @@
-
-
 .form{
     display: flex;
     flex-direction: column;
+    width:30%;
+    height:400px;
     gap:10px;
     border: 1px solid rgb(3, 3, 3);
     background-color: rgb(251, 245, 200);
     align-items: center;      /* horizontal */
+    
 }
 
 
