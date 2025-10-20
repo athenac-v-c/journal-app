@@ -5,9 +5,10 @@ import { useState } from "react"
 type User={
        username:string;
        password:string;
+       email:string
     }
 
-export default function SignUp(){
+export default function SignUp({onToggle}:{onToggle:() => void}){
     
     //const [User,setUser] = useState<User|null>(null)
     
@@ -63,10 +64,10 @@ export default function SignUp(){
                 
                 <div className="input-box">
                     <input
-                        type='text' 
+                        type='email' 
                         name='email'
                         value={email}
-                        onChange={(e)=>setUsername(e.target.value)}
+                        onChange={(e)=>setEmail(e.target.value)}
                     />
                     <label>Email</label>
                     <span className="icon"><i className='bxr  bx-envelope-alt'  ></i> </span>
@@ -84,8 +85,13 @@ export default function SignUp(){
                 <button className='btn' type = 'submit'>
                     Sign Up
                 </button>
-                 <button className="signup-login-btn">Already have an account? click to sign in</button>
+                
+  
+                
           </form>
+           <div>
+                <button className="signup-login-btn" onClick ={onToggle}>Already have an account? click to sign in</button>
+           </div>
         </div>
   
 

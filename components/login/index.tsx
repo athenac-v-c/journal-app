@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 
 import Link from 'next/link'
-export default function Login(){
+export default function Login({onToggle}:{onToggle:() => void}){
 
     const [username, setUsername] = useState<string|null>('')
     const [password,setPassword] = useState<string|null>('')
@@ -75,10 +75,10 @@ export default function Login(){
                 <button className='btn' type = 'submit'>
                     Sign In
                 </button>
-                 <button className="login-register-btn">Don't have an account?</button>
-            
             </form>
-            
+            <div>
+                <button className="signup-login-btn" onClick={onToggle}>Don't have an account?</button>
+            </div>
         </div>
   )
 

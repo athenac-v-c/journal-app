@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 
-let mockDB: { username: string; password: string }[] = []
+let mockDB: { username: string; email:string; password: string }[] = []
 
 export async function POST(req: Request) {
-  const { username,password } = await req.json()
-  const newUser = { username, password }
-  mockDB.push(newUser )
+  const { username,email,password } = await req.json()
+  const newUser = { username, email,password }
+  mockDB.push(newUser)
   console.log('get a new user')
   return NextResponse.json({ message: 'saved', newUser:newUser })
 }

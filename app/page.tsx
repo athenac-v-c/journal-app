@@ -15,9 +15,13 @@ export default function Home() {
   }*/
   const [showLogin, setShowLogin] = useState(false)
 
+  /*
   const handleLogin = ()=>{
     setShowLogin(true)
   }
+    */
+  const handleToggle = () => setShowLogin(!showLogin)
+
   return (
     
     <div >
@@ -50,10 +54,15 @@ A quiet space to capture moments, memories, and moods.</p>
 
           </div>
           <div className="login-signup-ui">   
-               <Login /> 
-               <SignUp />  
+               
+               {/*<Login onToggle={handleToggle}/> 
+               <SignUp onToggle={handleToggle}/>  */}
+               {showLogin ? (
+              <Login onToggle={handleToggle} />
+              ) : (
+               <SignUp onToggle={handleToggle} />
+                )}
           </div>
-
       </div>
     
     </div>

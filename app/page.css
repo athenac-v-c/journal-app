@@ -102,6 +102,7 @@ the login section is not wrapped around its parent (need to be fixed later)
     right: 0;
     width: calc(100% - 58%); /*cal(100%-58%) is wrong, need spaces*/
     height: 100%;
+   
 }
 
 .content h2{
@@ -122,6 +123,7 @@ the login section is not wrapped around its parent (need to be fixed later)
     position: absolute;
     background: transparent;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -197,8 +199,12 @@ the login section is not wrapped around its parent (need to be fixed later)
  text-decoration: underline;
 }
 .btn{
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    position: relative;
     width:80%;
-    height: 50%;
+    height: 10%;
     background-color: rgba(216, 100, 82, 0.938);
     border: none;
     outline: none;
@@ -211,10 +217,7 @@ the login section is not wrapped around its parent (need to be fixed later)
 }
 
 
-.login-register-btn{
-    margin-top: 10px;
-    font-size: 14px;
-}
+
 
 /*
 .login-signup-ui .form-box.register{
@@ -230,3 +233,21 @@ the login section is not wrapped around its parent (need to be fixed later)
 .login-signup-ui.active .form-box.login{
     transform: translateX(430px);
 }*/
+
+.form-box .signup-login-btn {
+  position: relative;
+  top:30%;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  background: transparent;
+  border: none;
+  color: #f0e7e7;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.form-box .signup-login-btn:hover {
+  color: #ffb997;
+}
