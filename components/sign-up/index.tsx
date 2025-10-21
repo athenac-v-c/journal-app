@@ -1,5 +1,4 @@
 'use client'
-import "../page.css"
 import { useState } from "react"
 
 type User={
@@ -32,10 +31,10 @@ export default function SignUp({onToggle}:{onToggle:() => void}){
     
             try{
         
-                const response = await fetch('/api/auth/sign-up',{
+                const response = await fetch('/api/auth/users',{
                     method:"POST",
                     headers:{'Content-type':'application/json'},
-                    body:JSON.stringify({username, email,password})
+                    body:JSON.stringify({username:username, email:email,password:password,action:"SIGNUP"})
                 })
                 const data = await response.json()
                 console.log(data)
@@ -46,7 +45,6 @@ export default function SignUp({onToggle}:{onToggle:() => void}){
             }
     
         }
-
     return(
         <div className="form-box register">
             <form  onSubmit={handleSignUp}>

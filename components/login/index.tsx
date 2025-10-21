@@ -20,11 +20,10 @@ export default function Login({onToggle}:{onToggle:() => void}){
         e.preventDefault()
 
         try{
-    
-            const response = await fetch('../../app/api/login',{
+            const response = await fetch('/api/auth/users',{
                 method:"POST",
                 headers:{'Content-type':'application/json'},
-                body:JSON.stringify({username, password})
+                body:JSON.stringify({action:"LOGIN",username:username, password:password})
             });
             const data = await response.json();
             console.log(data);
