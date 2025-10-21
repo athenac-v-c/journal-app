@@ -33,9 +33,7 @@ export default function Editor() {
           <RichTextEditor content={post} onChange={onChange}/>
           <button type="submit">save</button>
         </form>
-        <a href="/dashboard">back to dashboard</a>
-        
-        
+        <a href="/dashboard">back to dashboard</a> 
     </div>
   
    
