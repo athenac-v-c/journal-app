@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-let mockDB: { username: string; password: string }[] = [
-  { username: "test", password: "1234" },
+let mockDB: { username: string; email:string; password: string }[] = [
+  { username: "test", email:"athena12345@gmail.com",password: "1234" },
 ];
 
 export async function POST(req: Request) {
