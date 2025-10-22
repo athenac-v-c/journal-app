@@ -10,7 +10,7 @@ interface Dashboard{
     ownerEmail:string;
     noteIds: string[];
 }
-export async function GET(req:NextRequest,context:{ params:{ username:string} }) {
+export async function GET(req:NextRequest,context:{ params:{ username:string} }): Promise<Response> {
 
 
     const {username} = context.params
