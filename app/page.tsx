@@ -1,9 +1,6 @@
 'use client'
-import { SetStateAction, useState } from "react";
-import Image from "next/image";
-import RichTextEditor from "@/components/ui/rich-text-editor";
+import {useState } from "react";
 import Login from "@/components/login";
-import Dashboard from "./dashboard/page";
 import "./page.css"
 import SignUp from "@/components/sign-up";
 export default function Home() {

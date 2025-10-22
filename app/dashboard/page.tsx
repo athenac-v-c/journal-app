@@ -64,6 +64,8 @@ export default function Dashboard(){
                {notes.map((note)=>(
                   
                     <NoteCard 
+                        //Vercel built issue[need key prop]: react requires unique key prop for iteratoration loop to keep track of how each item changes
+                        key = {note.id}
                         id = {note.id}
                         content = {note.content} 
                     />
