@@ -6,14 +6,22 @@ const redis = new Redis({
     token:process.env.UPSTASH_REDIS_TOKEN!,
 })
 
+interface User{
+    id:string,
+    username?:string,
+    email:string,
+    password:string
+}
 export async function POST(req:Request){
        
     const {username, email, password, action} = await req.json()
 
     //retrieve users table from redis
     const users = JSON.parse((await redis.get("users")) || "[]")
-    const existingUser = users.find((u:any) => u.email === email)
-   
+
+    //ESLint issue on Vercel
+    //const existingUser = users.find((u:any) => u.email === email)
+    const existingUser = users.find((u:User) => u.email === email)
 
     //SIGNUP
     if ( action === "SIGNUP" ){
@@ -43,15 +51,29 @@ export async function POST(req:Request){
         await redis.set(users, JSON.stringify(users))
 
 
+       
+        //create dashboard for new user
+        const dashboards = JSON.parse((await redis.get("dashboards")) || "[]")
+        dashboards.push({"ownerEmail":email,"noteIds":[]})
+
+        await redis.set("dashboards",JSON.stringify( dashboards))
+        
         //return the message to client side
         return NextResponse.json({
             success:true,
-            message:"User created successfully",
+            message:"User created successfully,you can sign in now",
             user:newUser,
             action:"SIGNUP"
 
         })
-    }
+
+
+
+
+
+        
+    }   
+
 
     //LOGIN
 
