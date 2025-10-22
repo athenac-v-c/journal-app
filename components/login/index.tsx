@@ -1,15 +1,10 @@
 'use client'
 import React, { useState } from 'react'
-
-import Link from 'next/link'
 import { useRouter } from "next/navigation"
 
-
-
-const router = useRouter()
-
 export default function Login({onToggle}:{onToggle:() => void}){
-
+    
+    const router = useRouter()
     const [username, setUsername] = useState<string|null>('')
     const [password,setPassword] = useState<string|null>('')
 
@@ -87,7 +82,7 @@ export default function Login({onToggle}:{onToggle:() => void}){
                 </button>
             </form>
             <div>
-                <button className="signup-login-btn" onClick={onToggle}>Don't have an account?</button>
+                <button className="signup-login-btn" onClick={onToggle}>{"Don't have an account?"}</button>
             </div>
         </div>
   )
