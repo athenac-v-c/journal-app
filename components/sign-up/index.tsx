@@ -1,11 +1,17 @@
 'use client'
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
+
+const router = useRouter()
+/*
 type User={
        username:string;
        password:string;
        email:string
     }
+ */
+
 
 export default function SignUp({onToggle}:{onToggle:() => void}){
     
@@ -38,6 +44,11 @@ export default function SignUp({onToggle}:{onToggle:() => void}){
                 })
                 const data = await response.json()
                 console.log(data)
+                if(data.success){
+                    //to-do: redirect to login 
+                    return
+                }
+                
             }
             catch(err){
                 console.log('Error',err)
