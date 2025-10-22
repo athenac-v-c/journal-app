@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import {Redis} from "@upstash/redis"
 
 const redis = new Redis({
@@ -9,7 +10,7 @@ interface Dashboard{
     ownerEmail:string,
     noteIds: string[]
 }
-export async function GET(req:Request,{params}:{params:{username:string}}) {
+export async function GET(req:NextRequest,{params}:{params:{username:string}}) {
 
     const {searchParams} = new URL(req.url)
     const email = searchParams.get("email")
@@ -17,8 +18,11 @@ export async function GET(req:Request,{params}:{params:{username:string}}) {
     if(!email){
         return NextResponse.json({success:false, message:"Email missing"})
     }
-
-    const dashboards = JSON.parse((await redis.get("dashboards")) || "[]")
+    
+    //change for type-safe
+    const dashboardRawData = await redis.get("dashboards")
+    //const dashboards = JSON.parse((await redis.get("dashboards")) || "[]")
+    const dashboards = dashboardRawData ? JSON.parse(dashboardRawData as string) : [];
     const dashboard = dashboards.find((d:Dashboard) => d.ownerEmail === email)
 
 

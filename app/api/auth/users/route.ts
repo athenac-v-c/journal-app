@@ -53,11 +53,13 @@ export async function POST(req:Request){
 
        
         //create dashboard for new user
-        const dashboards = JSON.parse((await redis.get("dashboards")) || "[]")
+        //const dashboards = JSON.parse((await redis.get("dashboards")) || "[]")
+        const dashboardRawData = await redis.get("dashboards")
+        const dashboards = dashboardRawData ? JSON.parse(dashboardRawData as string) : [];
         dashboards.push({"ownerEmail":email,"noteIds":[]})
 
         await redis.set("dashboards",JSON.stringify( dashboards))
-        
+
         //return the message to client side
         return NextResponse.json({
             success:true,
