@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+//import { useRouter } from "next/navigation"
 
 
-const router = useRouter()
+
 /*
 type User={
        username:string;
@@ -15,7 +15,7 @@ type User={
 export default function SignUp({onToggle}:{onToggle:() => void}){
     
     //const [User,setUser] = useState<User|null>(null)
-    
+    //const router = useRouter()
     const [username, setUsername] = useState('')
     const [password,setPassword] = useState('')
     const [email,setEmail] = useState('')

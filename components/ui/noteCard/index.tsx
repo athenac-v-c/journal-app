@@ -1,7 +1,7 @@
 'use client'
-import { useState,useEffect } from "react"
+//import { useState,useEffect } from "react"
 import "./index.css"
-import Link from 'next/link'
+
 type NoteCardProps ={
     id:string
     content:string;
@@ -13,7 +13,7 @@ export default function NoteCard({id,content}:NoteCardProps){
         
         <div className="note-card">
             <div className="note-title">
-                <strong>title</strong>
+                <strong>{id}</strong>
             </div>
             <hr></hr>
             <div className="note-preview">
