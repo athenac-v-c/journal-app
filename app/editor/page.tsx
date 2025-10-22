@@ -1,6 +1,5 @@
 'use client'
-import { SetStateAction, useState } from "react";
-import Image from "next/image";
+import {useState } from "react";
 import RichTextEditor from "@/components/ui/rich-text-editor";
 
 export default function Editor() {
@@ -30,6 +29,7 @@ export default function Editor() {
     
     <div className="max-w-5xl max-w-5xl mx-auto py-8 ">
         <form onSubmit={handleSubmit}>
+          
           <RichTextEditor content={post} onChange={onChange}/>
           <button type="submit">save</button>
         </form>

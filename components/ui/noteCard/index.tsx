@@ -3,26 +3,24 @@ import { useState,useEffect } from "react"
 import "./index.css"
 import Link from 'next/link'
 type NoteCardProps ={
-    id:number;
-    title:string;
+    id:string
     content:string;
-    date:string
 }
 
-export default function NoteCard({id,title,content,date}:NoteCardProps){
+export default function NoteCard({id,content}:NoteCardProps){
 
     return(
         
         <div className="note-card">
             <div className="note-title">
-                <strong>{title}</strong>
+                <strong>title</strong>
             </div>
             <hr></hr>
             <div className="note-preview">
                 {content}
              </div>
             <div className="note-date">
-                {date}
+                date
              </div>
              <div className="buttons">
                 <a href = "#">edit</a>

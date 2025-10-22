@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-let mockDB: { id: string; content: string }[] = []
+/*const mockDB: { id: string; content: string }[] = []
 
 export async function POST(req: Request) {
   const { content } = await req.json()
@@ -12,4 +12,4 @@ export async function POST(req: Request) {
 
 export async function GET() {
   return NextResponse.json(mockDB)
-}
+}*/
