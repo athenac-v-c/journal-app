@@ -12,7 +12,6 @@ type User={
     }
  */
 
-
 export default function SignUp({onToggle}:{onToggle:() => void}){
     
     //const [User,setUser] = useState<User|null>(null)

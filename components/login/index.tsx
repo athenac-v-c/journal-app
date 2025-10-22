@@ -2,6 +2,12 @@
 import React, { useState } from 'react'
 
 import Link from 'next/link'
+import { useRouter } from "next/navigation"
+
+
+
+const router = useRouter()
+
 export default function Login({onToggle}:{onToggle:() => void}){
 
     const [username, setUsername] = useState<string|null>('')
@@ -27,9 +33,14 @@ export default function Login({onToggle}:{onToggle:() => void}){
             });
             const data = await response.json();
             console.log(data);
+            /*
             if(response.ok){
                 console.log("Found user in db");
                 window.location.href = data.redirect || '/dashboard';
+            */
+            if(data.success){
+                    localStorage.setItem("user", JSON.stringify(data.user))
+                    router.push("/dashboard")
             }else{
                 console.warn('Login falied', data.message);
                 alert(data.message || "Login falied, please check your account");
