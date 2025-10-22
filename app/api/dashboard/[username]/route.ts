@@ -7,11 +7,13 @@ const redis = new Redis({
     token:process.env.UPSTASH_REDIS_TOKEN!,
 })
 interface Dashboard{
-    ownerEmail:string,
-    noteIds: string[]
+    ownerEmail:string;
+    noteIds: string[];
 }
-export async function GET(req:NextRequest,{params}:{params:{username:string}}) {
+export async function GET(req:NextRequest,context:{ params:{ username:string} }) {
 
+
+    const {username} = context.params
     const {searchParams} = new URL(req.url)
     const email = searchParams.get("email")
 
@@ -34,7 +36,7 @@ export async function GET(req:NextRequest,{params}:{params:{username:string}}) {
     }
     return NextResponse.json({
         success:true,
-        username:params.username,
+        username,
         noteIds:dashboard.noteIds
     })   
 }
