@@ -12,35 +12,40 @@ interface Dashboard {
   noteIds: string[];
 }
 
-export async function GET(
-  req: NextRequest,
-  context: { params: Promise<{username:string}>;}
-) {
-  const { username } = await context.params;
-  const { searchParams } = new URL(req.url);
-  const email = searchParams.get("email");
+export async function GET(req: NextRequest,context: { params: Promise<{username:string}>;}) {
+    const { username } = await context.params;
+    const { searchParams } = new URL(req.url);
+    const email = searchParams.get("email");
 
-  if (!email) {
-    return NextResponse.json({ success: false, message: "Email missing" });
-  }
+    if (!email) {
+        return NextResponse.json({ success: false, message: "Email missing" });
+    }
 
-  const dashboardsRaw = await redis.get("dashboards");
-  const dashboards = dashboardsRaw ? JSON.parse(dashboardsRaw as string) : [];
+    const dashboardsRaw = await redis.get("dashboards");
+    //const dashboards = dashboardsRaw ? JSON.parse(dashboardsRaw as string) : [];
+    let dashboards:Dashboard[] = [];
+    if(typeof dashboardsRaw === "string"){
+        try{
+            dashboards = JSON.parse(dashboardsRaw);
+        }catch{
+            console.error("Invalid JSON in 'dashboards', need reset");
+            dashboards = [];
+        }
+    }else{
+            dashboards = Array.isArray(dashboardsRaw) ? dashboardsRaw :[];
+    }
+    const dashboard = dashboards.find((d: Dashboard) => d.ownerEmail === email);
 
-  const dashboard = dashboards.find(
-    (d: Dashboard) => d.ownerEmail === email
-  );
+    if (!dashboard) {
+        return NextResponse.json({
+        success: false,
+        message: `${email}'s dashboard not found`,
+        });
+    }
 
-  if (!dashboard) {
     return NextResponse.json({
-      success: false,
-      message: `${email}'s dashboard not found`,
+        success: true,
+        username,
+        noteIds: dashboard.noteIds,
     });
-  }
-
-  return NextResponse.json({
-    success: true,
-    username,
-    noteIds: dashboard.noteIds,
-  });
 }

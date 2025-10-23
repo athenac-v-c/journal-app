@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation"
 export default function Login({onToggle}:{onToggle:() => void}){
     
     const router = useRouter()
-    const [username, setUsername] = useState<string|null>('')
+    const [email, setEmail] = useState<string|null>('')
     const [password,setPassword] = useState<string|null>('')
 
-    const getUsername = (e:React.ChangeEvent<HTMLInputElement>)=>{
-        setUsername(e.target.value)
+    const getEmail = (e:React.ChangeEvent<HTMLInputElement>)=>{
+        setEmail(e.target.value)
     }
     const getPassword = (e:React.ChangeEvent<HTMLInputElement>)=>{
         setPassword(e.target.value)
@@ -24,7 +24,7 @@ export default function Login({onToggle}:{onToggle:() => void}){
             const response = await fetch('/api/auth/users',{
                 method:"POST",
                 headers:{'Content-type':'application/json'},
-                body:JSON.stringify({action:"LOGIN",username:username, password:password})
+                body:JSON.stringify({action:"LOGIN",email:email, password:password})
             });
             const data = await response.json();
             console.log(data);
@@ -33,9 +33,17 @@ export default function Login({onToggle}:{onToggle:() => void}){
                 console.log("Found user in db");
                 window.location.href = data.redirect || '/dashboard';
             */
-            if(data.success){
+            /*if(data.success){
                     localStorage.setItem("user", JSON.stringify(data.user))
                     router.push("/dashboard")
+                    //router.refresh()*/
+            if (data.success) {
+                    localStorage.setItem("user", JSON.stringify(data.user))
+                        // wait one micro-tick so the value is actually written
+                    requestAnimationFrame(async() => {
+                            await new Promise(r => setTimeout(r, 50))
+                            router.push("/dashboard")
+                    })
             }else{
                 console.warn('Login falied', data.message);
                 alert(data.message || "Login falied, please check your account");
@@ -54,7 +62,7 @@ export default function Login({onToggle}:{onToggle:() => void}){
                     <input
                         type='email' 
                         name='email'
-                        onChange={getUsername}
+                        onChange={getEmail}
                         required
                     />
                     <label>Email</label>

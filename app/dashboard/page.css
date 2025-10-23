@@ -3,6 +3,7 @@
 .head{
 display: flex;
 justify-content: space-between;
+background-color: white;
 }
 
 .head a{
@@ -16,6 +17,7 @@ justify-content: space-between;
 }
 
 .note-group{
+  background-color: white;
   display: flex;
   position:relative;
   flex-wrap:wrap;
